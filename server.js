@@ -25,6 +25,7 @@ app.get('/api/users', async (req, res) => {
     try {
         console.log("User route");
         const client = await pool.connect();
+        console.log("client");
         const data = await client.query("SELECT * FROM users;");
         console.log(data);
         res.json(data.rows)
