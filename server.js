@@ -1,7 +1,7 @@
 const express = require("express");
 // const { Pool } = require("pg");
 const app = express();
-const path = require("path");
+// const path = require("path");
 require("dotenv").config();
 // const moment = require("moment");
 const db = require('./db/db')
