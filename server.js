@@ -4,8 +4,8 @@ const app = express();
 // const path = require("path");
 require("dotenv").config();
 // const moment = require("moment");
-const db = require('./db/db')
-const PORT = process.env.PORT || 3000
+const pool = require('./db/db')
+// const PORT = process.env.PORT || 3000
 
 app.use(express.json());
 
@@ -22,8 +22,8 @@ app.use(express.static("static"));
 
 app.get('/api/users', async (req, res) => {
     try {
-        const data = await db.query("SELECT * FROM users");
-        res.send(data.rows)
+        const data = await pool.query("SELECT * FROM users;");
+        res.json(data.rows)
     } catch (error) {
         console.error(error.message);
     }
@@ -31,8 +31,8 @@ app.get('/api/users', async (req, res) => {
 
 app.get('/api/posts', async (req, res) => {
     try {
-        const data = await db.query("SELECT * FROM posts");
-        res.send(data.rows)
+        const data = await pool.query("SELECT * FROM posts;");
+        res.json(data.rows)
     } catch (error) {
         console.error(error.message);
     }
@@ -47,6 +47,6 @@ app.get('/api/posts', async (req, res) => {
 //     }
 // })
 
-app.listen(PORT, () => {
-    console.log(`Server running on port: ${PORT}`)
+app.listen(process.env.PORT, () => {
+    console.log(`Server running on port: ${process.env.PORT}`)
 })
