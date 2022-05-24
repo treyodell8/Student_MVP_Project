@@ -23,12 +23,15 @@ console.log("test");
 
 app.get('/api/users', async (req, res) => {
     try {
-        console.log("test");
-        const data = await pool.query("SELECT * FROM users;");
+        console.log("User route");
+        const client = await pool.connect();
+        const data = await client.query("SELECT * FROM users;");
         console.log(data);
         res.json(data.rows)
+        client.release();
     } catch (error) {
         console.error(error.message);
+        res.send("error")
     }
 })
 
