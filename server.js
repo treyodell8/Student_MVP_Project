@@ -4,7 +4,7 @@ const app = express();
 // const path = require("path");
 require("dotenv").config();
 // const moment = require("moment");
-const pool = require('./db/db')
+const pool = require('./db/db.js')
 // const PORT = process.env.PORT || 3000
 
 app.use(express.json());
@@ -22,7 +22,9 @@ app.use(express.static("static"));
 
 app.get('/api/users', async (req, res) => {
     try {
+        console.log("test");
         const data = await pool.query("SELECT * FROM users;");
+        console.log(data);
         res.json(data.rows)
     } catch (error) {
         console.error(error.message);
