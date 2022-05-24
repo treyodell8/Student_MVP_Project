@@ -1,0 +1,20 @@
+DROP DATABASE IF EXISTS blogdb;
+
+CREATE DATABASE blogdb;
+
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY NOT NULL,
+    name TEXT NOT NULL,
+    postid INT REFERENCES posts(postid)
+);
+
+DROP TABLE IF EXISTS posts;
+
+CREATE TABLE posts (
+    postid SERIAL PRIMARY KEY NOT NULL,
+    date TIMESTAMP NOT NULL,
+    post TEXT
+);
+
