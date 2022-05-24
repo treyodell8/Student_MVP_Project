@@ -1,11 +1,11 @@
 require("dotenv").config();
 const express = require("express");
 // const { Pool } = require("pg");
-// const path = require("path");
+
 // const moment = require("moment");
 const pool = require('./db/db.js')
 const app = express();
-// const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000
 
 app.use(express.json());
 
@@ -50,6 +50,6 @@ app.get('/api/posts', async (req, res) => {
 //     }
 // })
 
-app.listen(process.env.PORT, () => {
-    console.log(`Server running on port: ${process.env.PORT}`)
+app.listen(PORT, () => {
+    console.log(`Server running on port: ${PORT}`)
 })
