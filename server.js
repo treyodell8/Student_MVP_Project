@@ -19,6 +19,7 @@ app.use(express.json());
 //   });
 
 app.use(express.static("static"));
+console.log("test");
 
 app.get('/api/users', async (req, res) => {
     try {
