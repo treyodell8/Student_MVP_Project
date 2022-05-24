@@ -1,10 +1,10 @@
+require("dotenv").config();
 const express = require("express");
 // const { Pool } = require("pg");
-const app = express();
 // const path = require("path");
-require("dotenv").config();
 // const moment = require("moment");
 const pool = require('./db/db.js')
+const app = express();
 // const PORT = process.env.PORT || 3000
 
 app.use(express.json());
