@@ -111,14 +111,17 @@ createPostBtn.addEventListener('click', postCreate);
           })
         }
 
-// function addNewPostToDataBase(res) {
-//     const nameBlock = document.querySelector('#name-box');
-//     console.log(nameBlock.value);
-//     const blogBlock = document.querySelector('#post-block');
-//     console.log(blogBlock.value);
-// }
 
 
 function deletePost() {
-    console.log("delete this post")
+    const divToBeDeleted = document.getElementsByClassName('postdiv')
+    fetch("https://quiet-harbor-24229.herokuapp.com/api/users", {
+        method: 'DELETE',
+        headers: {
+            'Content-Type':'application/json',
+          },
+          body: JSON.stringify(divToBeDeleted)
+          })
 }
+
+       
