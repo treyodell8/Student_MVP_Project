@@ -88,6 +88,7 @@ function appendPosts(res) {
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = "Delete";
     postDiv.appendChild(deleteBtn);
+    deleteBtn.addEventListener('click', deletePost);
     
 }
 
@@ -116,3 +117,8 @@ createPostBtn.addEventListener('click', postCreate);
 //     const blogBlock = document.querySelector('#post-block');
 //     console.log(blogBlock.value);
 // }
+
+
+function deletePost() {
+    console.log("delete this post")
+}
