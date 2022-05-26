@@ -1,4 +1,3 @@
-let current;
 const apiURL = window.location.origin;
 const postBody = document.querySelector(".body-posts");
 const createBody = document.querySelector(".body-create");
@@ -61,16 +60,13 @@ $(createBtn).click(function(){
 //----------------------------------------------------//
 
 async function getAll() {
-    try {
-        const data = await fetch("http://localhost:3000/api/posts");
+        const data = await fetch("http://localhost:3000/api/users");
         const res = await data.json();
         console.log(res);
         res.forEach(element => {
-            appendPosts(res);
+            appendPosts(element);
         });
-    } catch (error) {
-        console.error(error.message);
-    }
+    
 }
 
 function appendPosts(res) {
@@ -83,8 +79,8 @@ function appendPosts(res) {
     post.classList.add('text');
     postDiv.appendChild(name);
     postDiv.appendChild(post);
-    const nameValue = res[0].name;
-    const postValue = res[0].post;
+    const nameValue = res.name;
+    const postValue = res.post;
     name.textContent = nameValue;
     post.textContent = postValue;
     
@@ -100,7 +96,7 @@ createPostBtn.addEventListener('click', postCreate);
         post: post,
         name: name
     }
-    fetch(`${apiURL}/api/posts`, {
+    fetch(`${apiURL}/api/users`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

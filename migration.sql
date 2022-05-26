@@ -4,16 +4,17 @@
 
 DROP TABLE IF EXISTS users;
 
-DROP TABLE IF EXISTS posts;
+-- DROP TABLE IF EXISTS posts;
 
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
-    name TEXT
+    name TEXT,
+    post TEXT
 );
 
-CREATE TABLE posts (
-    postid SERIAL PRIMARY KEY,
-    post TEXT,
-    userid INT REFERENCES users(id)
-);
+-- CREATE TABLE posts (
+--     postid SERIAL PRIMARY KEY,
+--     post TEXT,
+--     userid INT REFERENCES users(id)
+-- );
