@@ -86,7 +86,7 @@ function appendPosts(res) {
     post.textContent = postValue;
 
     const deleteBtn = document.createElement('button');
-    deleteBtn.classList.add(res.id)
+    deleteBtn.id = res.id
     deleteBtn.textContent = "I don't like this";
     postDiv.appendChild(deleteBtn);
     deleteBtn.addEventListener('click', deletePost);
