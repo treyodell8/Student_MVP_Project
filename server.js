@@ -43,6 +43,14 @@ app.delete('/api/users/', async (req, res) => {
     }
 })
 
+app.patch('/api/users/', async (req, res) => {
+    try {
+        const data = await pool.query(`UPDATE users SET post = ${req.body.post} WHERE id = ${req.body.postid};`)
+    } catch (error) {
+        console.error(error.message)
+    }
+})
+
 
 app.listen(PORT, () => {
     console.log(`Server running on port: ${PORT}`)

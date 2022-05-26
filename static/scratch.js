@@ -77,6 +77,7 @@ function appendPosts(res) {
     postBody.appendChild(postDiv);
     const name = document.createElement('div');
     const post = document.createElement('div');
+    post.id = "post-content";
     name.classList.add('text');
     post.classList.add('text');
     postDiv.appendChild(name);
@@ -90,6 +91,16 @@ function appendPosts(res) {
     deleteBtn.classList = res.id;
     deleteBtn.textContent = "I don't like this";
     postDiv.appendChild(deleteBtn);
+
+    const updateBtn = document.createElement('button');
+    updateBtn.textContent = "Change their opinion";
+    updateBtn.classList.add(res.id);
+    postDiv.appendChild(updateBtn);
+
+    updateBtn.addEventListener('click', (e) => {
+        updatePost(e)
+    })
+
     deleteBtn.addEventListener('click', (e) => {
         deletePost(e)
     });
@@ -136,4 +147,20 @@ function deletePost(e) {
           })
 }
 
-       
+
+function updatePost(e) {
+    const Alert = window.prompt('What would you like it to say?');
+    const updateDiv = document.querySelector('#post-content');
+    updateDiv.textContent = Alert;
+    const divToBeUpdated = {
+        postid: parseInt(e.target.classList[0]),
+        post: Alert
+    }
+    fetch("https://quiet-harbor-24229.herokuapp.com/api/users/", {
+        method: 'PATCH',
+        headers: {
+            'Content-Type':'application/json',
+          },
+          body: JSON.stringify(divToBeUpdated)
+          })
+}
