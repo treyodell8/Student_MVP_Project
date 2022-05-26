@@ -34,9 +34,9 @@ app.post('/api/users', async (req, res) => {
     }
 })
 
-app.delete('/api/users/:id', async (req, res) => {
+app.delete('/api/users/', async (req, res) => {
     try {
-        const data = await pool.query("DELETE FROM users WHERE id = $1;", [req.params.id])
+        const data = await pool.query(`DELETE FROM users WHERE id = ${req.body.postid}`)
         res.json(data.rows)
     } catch (err) {
         console.error(err.message)

@@ -126,7 +126,7 @@ function deletePost(e) {
         elements[0].parentNode.removeChild(elements[0]);
     }
     // const divToBeDeleted = document.querySelector(postDiv);
-    fetch("https://quiet-harbor-24229.herokuapp.com/api/users/:id", {
+    fetch("https://quiet-harbor-24229.herokuapp.com/api/users/", {
         method: 'DELETE',
         headers: {
             'Content-Type':'application/json',
