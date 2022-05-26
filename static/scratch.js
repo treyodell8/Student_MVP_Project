@@ -60,7 +60,7 @@ $(createBtn).click(function(){
 //----------------------------------------------------//
 
 async function getAll() {
-        const data = await fetch("http://localhost:3000/api/users");
+        const data = await fetch(apiURL);
         const res = await data.json();
         console.log(res);
         res.forEach(element => {
