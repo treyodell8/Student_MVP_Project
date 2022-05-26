@@ -33,14 +33,6 @@ app.get('/api/users', async (req, res) => {
     }
 })
 
-// app.get('/api/posts', async (req, res) => {
-//     try {
-//         const data = await pool.query("SELECT ");
-//         res.json(data.rows)
-//     } catch (error) {
-//         console.error(error.message);
-//     }
-// })
 
 app.post('/api/users', async (req, res) => {
     try {
@@ -51,23 +43,15 @@ app.post('/api/users', async (req, res) => {
     }
 })
 
+app.delete('/api/users/:id', async (req, res) => {
+    try {
+        const data = await pool.query("DELETE FROM users WHERE id = $1;", [req.params.id])
+        res.json(data.rows)
+    } catch (err) {
+        console.error(err.message)
+    }
+})
 
-
-
-// app.post('/api/posts', async (req, res) => {
-//     // let data;
-//     // try {
-//     //     data = await pool.query(`SELECT * FROM users WHERE name = `)
-//     // } catch (error) {
-        
-//     // }
-//     try {
-//         const data = await pool.query(`INSERT INTO posts (post) VALUES ('${req.body.post}');`);
-//         res.json(req.body);
-//     } catch (error) {
-//         console.error(error.message);
-//     }
-// })
 
 app.listen(PORT, () => {
     console.log(`Server running on port: ${PORT}`)
