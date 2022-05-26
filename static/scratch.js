@@ -153,7 +153,7 @@ function updatePost(e) {
     if (Alert.length === 0) {
         return undefined;
     }
-    const updateDiv = document.querySelector(`#post-content ${e.target.classList}`);
+    const updateDiv = document.getElementById(`post-content ${e.target.classList}`);
     updateDiv.textContent = Alert;
     const divToBeUpdated = {
         postid: parseInt(e.target.classList[0]),
