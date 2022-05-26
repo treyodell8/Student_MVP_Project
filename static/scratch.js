@@ -60,7 +60,7 @@ $(createBtn).click(function(){
 //----------------------------------------------------//
 
 async function getAll() {
-        const data = await fetch(apiURL);
+        const data = await fetch("https://quiet-harbor-24229.herokuapp.com/api/users");
         const res = await data.json();
         console.log(res);
         res.forEach(element => {
@@ -96,7 +96,7 @@ createPostBtn.addEventListener('click', postCreate);
         post: post,
         name: name
     }
-    fetch(`${apiURL}/api/users`, {
+    fetch("https://quiet-harbor-24229.herokuapp.com/api/users", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
