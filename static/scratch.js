@@ -89,7 +89,7 @@ function appendPosts(res) {
     deleteBtn.id = res.id;
     deleteBtn.textContent = "I don't like this";
     postDiv.appendChild(deleteBtn);
-    deleteBtn.addEventListener('click', deletePost(e));
+    deleteBtn.addEventListener('click', deletePost);
     
 }
 
@@ -114,9 +114,8 @@ createPostBtn.addEventListener('click', postCreate);
 
 
 
-function deletePost(e) {
+function deletePost() {
     const divToBeDeleted = document.querySelector('#')
-    console.log(e.target);
     fetch("https://quiet-harbor-24229.herokuapp.com/api/users/:id", {
         method: 'DELETE',
         headers: {
