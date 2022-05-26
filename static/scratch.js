@@ -118,9 +118,10 @@ createPostBtn.addEventListener('click', postCreate);
 
 
 function deletePost(e) {
-    console.log(e.target);
-    const element = document.getElementsByClassName(e.target.classList);
-    element.remove()
+    var elements = document.getElementsByClassName(res.id);
+    while(elements.length > 0){
+        elements[0].parentNode.removeChild(elements[0]);
+    }
     // const divToBeDeleted = document.querySelector(postDiv);
     fetch("https://quiet-harbor-24229.herokuapp.com/api/users/:id", {
         method: 'DELETE',
