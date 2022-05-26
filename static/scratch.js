@@ -117,6 +117,8 @@ createPostBtn.addEventListener('click', postCreate);
         post: post,
         name: name
     }
+    name.value = '';
+    post.value = '';
     fetch("https://quiet-harbor-24229.herokuapp.com/api/users", {
         method: 'POST',
         headers: {
