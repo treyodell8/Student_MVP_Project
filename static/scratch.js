@@ -159,6 +159,7 @@ function updatePost(e) {
         postid: parseInt(e.target.classList[0]),
         post: Alert
     }
+    console.log(divToBeUpdated);
     fetch("https://quiet-harbor-24229.herokuapp.com/api/users/", {
         method: 'PATCH',
         headers: {
