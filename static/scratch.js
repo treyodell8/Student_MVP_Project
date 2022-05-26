@@ -14,6 +14,7 @@ const createBtn = document.querySelector('#create');
 
 //When clicking on "view all posts"
 $(postsBtn).click(function(){
+    $(postBody).empty();
     $(bodyDashboard).hide();
     $(createBody).hide();
     $(postBody).show();
