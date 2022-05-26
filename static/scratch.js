@@ -150,6 +150,9 @@ function deletePost(e) {
 
 function updatePost(e) {
     const Alert = window.prompt('What would you like it to say?');
+    if (Alert.length === 0) {
+        return undefined;
+    }
     const updateDiv = document.querySelector('#post-content');
     updateDiv.textContent = Alert;
     const divToBeUpdated = {
