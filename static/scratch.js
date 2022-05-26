@@ -86,7 +86,7 @@ function appendPosts(res) {
     post.textContent = postValue;
 
     const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = "Delete";
+    deleteBtn.textContent = "I don't like this";
     postDiv.appendChild(deleteBtn);
     deleteBtn.addEventListener('click', deletePost);
     
@@ -120,7 +120,7 @@ function deletePost() {
         headers: {
             'Content-Type':'application/json',
           },
-          body: JSON.stringify(divToBeDeleted)
+          body: JSON.stringify({divToBeDeleted})
           })
 }
 

@@ -9,15 +9,6 @@ const PORT = process.env.PORT || 3000
 
 app.use(express.json());
 
-// const pool = new Pool({
-//     user: 'wayneodell',
-//     host: 'localHost',
-//     database: 'blogdb',
-//     password: 'secretpassword',
-//     port: 5432,
-    
-//   });
-
 app.use(express.static("static"));
 
 app.get('/api/users', async (req, res) => {
