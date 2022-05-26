@@ -76,6 +76,7 @@
   color: white;
   text-align: center;
   height: fit-content;
+  opacity:inherit;
 }
 
 .footer-text {
