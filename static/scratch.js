@@ -77,7 +77,7 @@ function appendPosts(res) {
     postBody.appendChild(postDiv);
     const name = document.createElement('div');
     const post = document.createElement('div');
-    post.id = "post-content";
+    post.id = `post-content ${res.id}`;
     name.classList.add('text');
     post.classList.add('text');
     postDiv.appendChild(name);
@@ -153,7 +153,7 @@ function updatePost(e) {
     if (Alert.length === 0) {
         return undefined;
     }
-    const updateDiv = document.querySelector('#post-content');
+    const updateDiv = document.querySelector(`#post-content ${e.target.classList}`);
     updateDiv.textContent = Alert;
     const divToBeUpdated = {
         postid: parseInt(e.target.classList[0]),
