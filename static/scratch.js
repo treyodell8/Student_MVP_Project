@@ -115,7 +115,7 @@ createPostBtn.addEventListener('click', postCreate);
 
 function deletePost() {
     const divToBeDeleted = document.getElementsByClassName('postdiv')
-    fetch("https://quiet-harbor-24229.herokuapp.com/api/users:id", {
+    fetch("https://quiet-harbor-24229.herokuapp.com/api/users/:id", {
         method: 'DELETE',
         headers: {
             'Content-Type':'application/json',
