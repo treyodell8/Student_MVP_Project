@@ -81,3 +81,24 @@
 .footer-text {
   color: black;
 }
+
+/*create body */
+.create-instructions {
+  background-color: olive;
+  font-size: 20px;
+  text-align: center;
+}
+
+.postdiv {
+  margin:auto;
+  width: 50%;
+  padding: 10px;
+  border: 3px solid green;
+  background-color: olive;
+}
+
+.text {
+  color:black;
+  font-size: 30px;
+  text-align: center;
+}

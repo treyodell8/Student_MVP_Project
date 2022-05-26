@@ -19,13 +19,10 @@ app.use(express.json());
 //   });
 
 app.use(express.static("static"));
-console.log("test");
 
 app.get('/api/users', async (req, res) => {
     try {
-        console.log("User route");
         const client = await pool.connect();
-        console.log("client");
         const data = await client.query("SELECT * FROM users;");
         console.log(data);
         res.json(data.rows)
@@ -38,21 +35,27 @@ app.get('/api/users', async (req, res) => {
 
 app.get('/api/posts', async (req, res) => {
     try {
-        const data = await pool.query("SELECT * FROM posts;");
+        const data = await pool.query("SELECT users.name, posts.postid, posts.post, posts.userid FROM posts INNER JOIN users ON posts.userid =users.id;");
         res.json(data.rows)
     } catch (error) {
         console.error(error.message);
     }
 })
 
-// app.get('/pets/', async (req, res) => {
-//     try {
-//         const data = await pool.query("SELECT * FROM pets;");
-//         res.json(data.rows)
-//     } catch (err) {
-//         console.error(err.message);
-//     }
-// })
+app.post('/api/posts', async (req, res) => {
+    // let data;
+    // try {
+    //     data = await pool.query(`SELECT * FROM users WHERE name = `)
+    // } catch (error) {
+        
+    // }
+    try {
+        const data = await pool.query(`INSERT INTO posts (post) VALUES ('${req.body.post}');`);
+        res.json(req.body);
+    } catch (error) {
+        console.error(error.message);
+    }
+})
 
 app.listen(PORT, () => {
     console.log(`Server running on port: ${PORT}`)

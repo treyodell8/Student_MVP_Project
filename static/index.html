@@ -17,11 +17,15 @@
     <div class="header">
       <a href="#default" class="logo">BlogSpace</a>
       <nav class="header-right">
-        <button type="button" class="nav__link active">Dashboard</button>
+        <button type="button" id="dashboard" class="nav__link active">
+          Dashboard
+        </button>
         <button type="button" id="posts" class="nav__link">
           View All Posts
         </button>
-        <button type="button" class="nav__link">Create A Post</button>
+        <button type="button" id="create" class="nav__link">
+          Create A Post
+        </button>
       </nav>
     </div>
     <div class="body-dashboard">
@@ -33,8 +37,26 @@
         posts of other users, and see what ideas you may be missing out on!
       </p>
     </div>
-    <div class="body-posts">
-      <p>You shouldn't see this</p>
+    <div class="body-posts"></div>
+    <div class="body-create">
+      <p class="create-instructions">
+        Here, feel free to just let it all out! Just add your name, and feel
+        free to say whatever you want. Don't worry about being cancelled.
+      </p>
+      <label for="w3review">Blog</label>
+      <form>
+        Name :
+        <input type="text" id="name-box" name="Fname" />
+      </form>
+      <textarea
+        id="post-block"
+        placeholder="Free speech at your fingertips..."
+        name="w3review"
+        rows="4"
+        cols="50"
+      >
+      </textarea>
+      <button type="button" id="Create-Post" class="nav__link">Post</button>
     </div>
     <div class="footer">
       <p class="footer-text">This is a product of Wayne Odell</p>

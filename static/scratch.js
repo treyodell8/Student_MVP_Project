@@ -1,22 +1,117 @@
-console.log("hello")
+let current;
+const apiURL = window.location.origin;
 const postBody = document.querySelector(".body-posts");
-$(postBody).hide();
-//Buttons for the nav-bar
+const createBody = document.querySelector(".body-create");
 const bodyDashboard = document.querySelector('.body-dashboard');
+
+//only the dashboard HTML body will appear when page initially runs
+$(postBody).hide();
+$(createBody).hide();
+
+//Buttons for the nav-bar
 const postsBtn = document.querySelector('#posts');
+const dashBtn = document.querySelector('#dashboard');
+const createBtn = document.querySelector('#create');
+
+//When clicking on "view all posts"
 $(postsBtn).click(function(){
     $(bodyDashboard).hide();
-})
-
-$(postsBtn).click(function(){
+    $(createBody).hide();
     $(postBody).show();
+    getAll();
 })
 
-
-dataReturn()
-
-function dataReturn() {
-$.get("http://localhost:3000/api/users", function(data) {
-    console.log(data[0].name);
+//When clicking on "dashboard"
+$(dashBtn).click(function(){
+    $(postBody).hide();
+    $(createBody).hide();
+    $(bodyDashboard).show();
 })
+
+//When clicking on "create a post"
+$(createBtn).click(function(){
+    $(postBody).hide();
+    $(bodyDashboard).hide();
+    $(createBody).show();
+})
+
+// //get requests for both of our APIs
+// userReturn()
+
+// function userReturn() {
+// $.get("http://localhost:3000/api/users", function(data) {
+//     for (var x = 0; x < data.length; x++) {
+//         console.log(data);
+//         }
+//     });
+//     $.get("http://localhost:3000/api/posts", function(data) {
+//     })
+// }
+
+// postReturn();
+
+// function postReturn() {
+// $.get("http://localhost:3000/api/posts", function(data) {
+//     for (var x = 0; x < data.length; x++) {
+//     console.log(data);
+//     }
+// });
+// }
+
+//----------------------------------------------------//
+
+async function getAll() {
+    try {
+        const data = await fetch("http://localhost:3000/api/posts");
+        const res = await data.json();
+        console.log(res);
+        res.forEach(element => {
+            appendPosts(res);
+        });
+    } catch (error) {
+        console.error(error.message);
+    }
 }
+
+function appendPosts(res) {
+    const postDiv = document.createElement('div');
+    postDiv.classList.add('postdiv');
+    postBody.appendChild(postDiv);
+    const name = document.createElement('div');
+    const post = document.createElement('div');
+    name.classList.add('text');
+    post.classList.add('text');
+    postDiv.appendChild(name);
+    postDiv.appendChild(post);
+    const nameValue = res[0].name;
+    const postValue = res[0].post;
+    name.textContent = nameValue;
+    post.textContent = postValue;
+    
+}
+
+const createPostBtn = document.querySelector('#Create-Post');
+createPostBtn.addEventListener('click', postCreate);
+
+ async function postCreate() {
+    let name = document.querySelector('#name-box').value;
+    let post = document.querySelector('#post-block').value;
+    let postRequest = {
+        post: post,
+        name: name
+    }
+    fetch(`${apiURL}/api/posts`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(postRequest),
+          })
+        }
+
+// function addNewPostToDataBase(res) {
+//     const nameBlock = document.querySelector('#name-box');
+//     console.log(nameBlock.value);
+//     const blogBlock = document.querySelector('#post-block');
+//     console.log(blogBlock.value);
+// }
