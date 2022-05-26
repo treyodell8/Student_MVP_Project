@@ -1,5 +1,9 @@
 /* header stuff */
 
+body {
+  background-color: lightblue;
+}
+
 .header {
     overflow: hidden;
     background-color: lightgray;
