@@ -73,6 +73,7 @@ async function getAll() {
 function appendPosts(res) {
     const postDiv = document.createElement('div');
     postDiv.classList.add('postdiv');
+    postDiv.setAttribute('id', postDiv);
     postBody.appendChild(postDiv);
     const name = document.createElement('div');
     const post = document.createElement('div');
@@ -89,7 +90,9 @@ function appendPosts(res) {
     deleteBtn.id = res.id;
     deleteBtn.textContent = "I don't like this";
     postDiv.appendChild(deleteBtn);
-    deleteBtn.addEventListener('click', deletePost);
+    deleteBtn.addEventListener('click', (e) => {
+        deletePost(e)
+    });
     
 }
 
@@ -114,8 +117,8 @@ createPostBtn.addEventListener('click', postCreate);
 
 
 
-function deletePost() {
-    const divToBeDeleted = document.querySelector('#')
+function deletePost(e) {
+    const divToBeDeleted = document.querySelector(postDiv);
     fetch("https://quiet-harbor-24229.herokuapp.com/api/users/:id", {
         method: 'DELETE',
         headers: {
