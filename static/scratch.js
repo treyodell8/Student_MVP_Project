@@ -73,7 +73,7 @@ async function getAll() {
 function appendPosts(res) {
     const postDiv = document.createElement('div');
     postDiv.classList.add('postdiv');
-    postDiv.setAttribute('id', postDiv);
+    postDiv.id = res.post;
     postBody.appendChild(postDiv);
     const name = document.createElement('div');
     const post = document.createElement('div');
