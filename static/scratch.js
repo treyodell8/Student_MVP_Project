@@ -118,6 +118,9 @@ createPostBtn.addEventListener('click', postCreate);
 
 
 function deletePost(e) {
+    const divToBeDeleted = {
+        postid: e.target.classList
+    }
     var elements = document.getElementsByClassName(e.target.classList);
     while(elements.length > 0){
         elements[0].parentNode.removeChild(elements[0]);
@@ -128,7 +131,7 @@ function deletePost(e) {
         headers: {
             'Content-Type':'application/json',
           },
-          body: JSON.stringify({divToBeDeleted})
+          body: JSON.stringify(divToBeDeleted)
           })
 }
 
