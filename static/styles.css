@@ -118,3 +118,8 @@ body {
 .Update-Button {
   background-color: #4CAF50;
 }
+
+.post-block {
+  border: 5px solid #FFFF00;
+text-align: center;
+}
