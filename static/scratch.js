@@ -96,7 +96,7 @@ function appendPosts(res) {
     const updateBtn = document.createElement('button');
     updateBtn.textContent = "Change their opinion";
     updateBtn.classList.add(res.id);
-    deleteBtn.classList.add('Update-Button')
+    updateBtn.classList.add('Update-Button')
     postDiv.appendChild(updateBtn);
 
     updateBtn.addEventListener('click', (e) => {
