@@ -89,12 +89,14 @@ function appendPosts(res) {
 
     const deleteBtn = document.createElement('button');
     deleteBtn.classList = res.id;
+    deleteBtn.classList.add('Delete-Button')
     deleteBtn.textContent = "I don't like this";
     postDiv.appendChild(deleteBtn);
 
     const updateBtn = document.createElement('button');
     updateBtn.textContent = "Change their opinion";
     updateBtn.classList.add(res.id);
+    deleteBtn.classList.add('Update-Button')
     postDiv.appendChild(updateBtn);
 
     updateBtn.addEventListener('click', (e) => {
