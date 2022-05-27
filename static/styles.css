@@ -110,3 +110,11 @@ body {
   font-size: 30px;
   text-align: center;
 }
+
+.Delete-Button {
+  background-color: #f44336;
+}
+
+.Update-Button {
+  background-color: #4CAF50;
+}
